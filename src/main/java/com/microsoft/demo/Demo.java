@@ -2,7 +2,7 @@ package com.microsoft.demo;
 
 public class Demo {
 
-    public static main void(String[] args) {
+    public static void main (String[] args) {
         Demo test = new Demo();
         
         test.DoSomething(true);
