@@ -5,7 +5,7 @@ public class Demo {
     public static main void(String[] args) {
         Demo test = new Demo();
         
-        Demo.DoSomething(true);
+        test.DoSomething(true);
     }
     
     public void DoSomething(boolean flag){
