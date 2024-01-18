@@ -6,13 +6,10 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
-
 jobs:
 - job: Maven
   pool:
-    vmImage: windows-latest
+    vmImage: ubuntu-latest
   steps:
   - task: Maven@3
     inputs:
@@ -27,7 +24,7 @@ jobs:
 
 - job: PrintIP
   pool:
-    vmImage: windows-latest
+    vmImage: ubuntu-latest
   steps:
   - script: |
       # Add a script to print the machine's IP address
