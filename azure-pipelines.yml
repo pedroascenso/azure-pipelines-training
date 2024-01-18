@@ -9,20 +9,28 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+jobs:
+- job: Maven
+  pool:
+    vmImage: windows-latest
+  steps:
+  - task: Maven@3
+    inputs:
+      mavenPomFile: 'pom.xml'
+      mavenOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.8'
+      jdkArchitectureOption: 'x64'
+      publishJUnitResults: true
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      goals: 'package'
 
-- script: |
-    # Add a script to print the machine's IP address
-    echo "Machine IP Address:"
-    ip addr show | grep -oP 'inet \K\S+'
-  displayName: 'Print Machine IP Address'
+- job: PrintIP
+  pool:
+    vmImage: windows-latest
+  steps:
+  - script: |
+      # Add a script to print the machine's IP address
+      echo "Machine IP Address:"
+      ip addr show | grep -oP 'inet \K\S+'
+    displayName: 'Print Machine IP Address'
