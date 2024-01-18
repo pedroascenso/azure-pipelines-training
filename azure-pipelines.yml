@@ -31,3 +31,5 @@ jobs:
       echo "Machine IP Address:"
       ip addr show | grep -oP 'inet \K\S+'
     displayName: 'Print Machine IP Address'
+
+    
